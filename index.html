@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-height: 500px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav style="display: flex; justify-content: center; align-items: center; gap: 50px;">
+        <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
+            <li><a href="#" onclick="showPage('landing')">Home</a></li>
+            <li><a href="#" onclick="showPage('about')">About</a></li>
+            <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+            <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+        </ul>
+        <div style="display: flex; gap: 10px; position: absolute; right: 20px;">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="images/facebook.svg" alt="Facebook" style="width: 20px; height: 20px; filter: invert(100%);">
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <img src="images/twitter.svg" alt="Twitter" style="width: 20px; height: 20px; filter: invert(100%);">
+            </a>
+            <a href="https://www.linkedin.com" target="_blank">
+                <img src="images/linkedin.svg" alt="LinkedIn" style="width: 20px; height: 20px; filter: invert(100%);">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="images/instagram.svg" alt="Instagram" style="width: 20px; height: 20px; filter: invert(100%);">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div id="landing" class="page">
+            <h1>Welcome to My Portfolio</h1>
+            <p>This is the landing page. Here you can find information about me and my work.</p>
+        
+        <!-- Banner -->
+        <img src="images/banner.jpg" alt="Banner Image" style="width:100%; max-height: 300px; object-fit: cover;">
+
+        <!-- Heading -->
+        <h4 style="text-align: center; color: grey;">SOME OF MY LATEST WORK</h3>
+
+            <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+                <a href="https://youtu.be/OiQVUGaUuVI?si=0CYI_g6t3C2ytn53" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center;">
+                        <img src="images/food generator.png" alt="Delicious Recipe Generator" style="width: 200px; height: 150px; object-fit: cover;">
+                        <p>Delicious Recipe Generator</p>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=tVFoUacdf4Q" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center;">
+                        <img src="images/robot.png" alt="Interview Preparation Assistant" style="width: 200px; height: 150px; object-fit: cover;">
+                        <p>Interview Preparation Assistant</p>
+                    </div>
+                </a>
+                <a href="https://github.com/konradbachusz/AWS-MLOps-module" style="text-decoration: none; color: inherit;">
+                    <div style="text-align: center;">
+                        <img src="images/mlops_accelerator.png" alt="MLOps Accelerator" style="width: 220px; height: 150px; object-fit: cover;">
+                        <p>MLOps Accelerator</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <div id="about" class="page hidden">
+            <h2>About Me</h2>
+            <p>I am a passionate developer with experience in web technologies. I enjoy building things and learning new skills.</p>
+            <p>More about my background and expertise will be here.</p>
+        </div>
+
+        <div id="projects" class="page hidden">
+            <h2>My Projects</h2>
+            <p>Here are some of the projects I've worked on:</p>
+            <ul>
+                <li>Project 1: A simple web application.</li>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OiQVUGaUuVI?si=iGFsbrQuL4v-mM_v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <li>Project 2: A personal website.</li>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/tVFoUacdf4Q?si=sB1l6VkYYobtVzSD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <li>Project 3: A small game.</li>
+            </ul>
+        </div>
+
+        
+        <div id="contact" class="page hidden">
+            <h2>Contact Me</h2>
+                 <form action="#" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br>
+                <input type="submit" value="Send">
+            </form>
+
+            <p>You can reach me at: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <p>Or connect with me on <a href="#">LinkedIn</a>.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 My Portfolio</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.add('hidden');
+            });
+
+            // Show the selected page
+            const selectedPage = document.getElementById(pageId);
+            selectedPage.classList.remove('hidden');
+        }
+
+        // Show the landing page by default
+        showPage('landing');
+    </script>
+
+</body>
+</html>
