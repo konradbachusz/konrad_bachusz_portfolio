@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #1e293b;
+            color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+
+        .nav-links li a {
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links li a:hover {
+            color: #60a5fa;
+        }
+
+        .nav-links li a.active {
+            color: #60a5fa;
+            border-bottom: 2px solid #60a5fa;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #f1f5f9;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #1e293b;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                padding: 0.5rem 0;
+            }
+
+            .social-links {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+        }
+
+        .container {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            min-height: calc(100vh - 200px);
+            border-radius: 8px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+                margin: 1rem;
+                border-radius: 4px;
+            }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #1e293b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #475569;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+
+            h2 {
+                font-size: 1.875rem;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #1e293b;
+            color: #f1f5f9;
+            margin-top: 3rem;
+        }
+
+        .projects-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 0;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .project-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .video-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="hamburger" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="social-links">
+                <a href="https://github.com/konradbachusz" target="_blank">
+                    <img src="images/github-mark.svg" alt="GitHub" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+                </a>
+                <a href="https://www.linkedin.com/in/konradbachusz/" target="_blank">
+                    <img src="images/linkedin.svg" alt="LinkedIn" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="projects-intro">
+            <h1>My Projects</h1>
+            <p>Here's a collection of projects I've worked on, ranging from AI-powered applications to complete MLOps solutions. Each project demonstrates different aspects of my technical expertise and problem-solving approach.</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="images/food generator.png" alt="Delicious Recipe Generator" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Delicious Recipe Generator</h3>
+                    <p class="project-description">An AI-powered application that generates personalized recipes based on user preferences, dietary restrictions, and available ingredients. Features include smart ingredient substitutions and nutritional analysis.</p>
+
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">AI/ML</span>
+                        <span class="project-tag">Flask</span>
+                        <span class="project-tag">NLP</span>
+                    </div>
+
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/OiQVUGaUuVI?si=iGFsbrQuL4v-mM_v" title="Delicious Recipe Generator Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://youtu.be/OiQVUGaUuVI?si=0CYI_g6t3C2ytn53" target="_blank" class="project-link">Watch Demo →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="images/robot.png" alt="Interview Preparation Assistant" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">Interview Preparation Assistant</h3>
+                    <p class="project-description">A comprehensive platform that helps job seekers prepare for technical interviews through AI-powered mock interviews, personalized feedback, and adaptive question generation based on the user's skill level.</p>
+
+                    <div class="project-tags">
+                        <span class="project-tag">React</span>
+                        <span class="project-tag">Node.js</span>
+                        <span class="project-tag">AI Integration</span>
+                        <span class="project-tag">Real-time</span>
+                    </div>
+
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/tVFoUacdf4Q?si=sB1l6VkYYobtVzSD" title="Interview Preparation Assistant Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://www.youtube.com/watch?v=tVFoUacdf4Q" target="_blank" class="project-link">Watch Demo →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="images/mlops_accelerator.png" alt="MLOps Accelerator" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">MLOps Accelerator</h3>
+                    <p class="project-description">A complete MLOps pipeline solution built on AWS that automates machine learning model development, training, validation, and deployment. Includes monitoring, versioning, and automated retraining capabilities.</p>
+
+                    <div class="project-tags">
+                        <span class="project-tag">AWS</span>
+                        <span class="project-tag">MLOps</span>
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Docker</span>
+                        <span class="project-tag">CI/CD</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/konradbachusz/AWS-MLOps-module" target="_blank" class="project-link">View Source →</a>
+                        <a href="https://github.com/konradbachusz/AWS-MLOps-module" target="_blank" class="project-link">Documentation →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 250px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: 600;">
+                    Portfolio Website
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Personal Portfolio Website</h3>
+                    <p class="project-description">A responsive, modern portfolio website built with vanilla HTML, CSS, and JavaScript. Features a mobile-first design, smooth animations, and optimized performance across all devices.</p>
+
+                    <div class="project-tags">
+                        <span class="project-tag">HTML5</span>
+                        <span class="project-tag">CSS3</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Responsive</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="index.html" class="project-link">View Live →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 My Portfolio</p>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile navigation when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('nav-links');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

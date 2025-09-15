@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>About - My Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -52,6 +52,11 @@
 
         .nav-links li a:hover {
             color: #60a5fa;
+        }
+
+        .nav-links li a.active {
+            color: #60a5fa;
+            border-bottom: 2px solid #60a5fa;
         }
 
         .social-links {
@@ -147,10 +152,10 @@
             margin-bottom: 1.25rem;
         }
 
-        h4 {
-            font-size: 1.25rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #475569;
         }
 
         p {
@@ -176,130 +181,48 @@
             color: #f1f5f9;
             margin-top: 3rem;
         }
-        .hidden {
-            display: none;
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .hero-section {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .hero-description {
-            font-size: 1.25rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .banner-container {
-            margin: 3rem 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .banner-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .projects-section {
-            margin-top: 4rem;
-        }
-
-        .section-title {
-            text-align: center;
-            color: #64748b;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 3rem;
-        }
-
-        .projects-grid {
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
-        .project-card {
-            background: #ffffff;
+        .skill-category {
+            background: #f8fafc;
+            padding: 2rem;
             border-radius: 12px;
-            padding: 1.5rem;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            border-left: 4px solid #60a5fa;
         }
 
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .project-image-container {
-            border-radius: 8px;
-            overflow: hidden;
+        .skill-category h3 {
+            color: #1e293b;
             margin-bottom: 1rem;
         }
 
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+        .skill-list {
+            list-style: none;
+            padding: 0;
         }
 
-        .project-card:hover .project-image {
-            transform: scale(1.05);
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #1e293b;
-        }
-
-        .project-description {
-            color: #64748b;
-            margin-bottom: 0;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-description {
-                font-size: 1.1rem;
-            }
-
-            .banner-image {
-                max-height: 250px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .project-card {
-                padding: 1.25rem;
-            }
-
-            .project-image {
-                height: 180px;
-            }
+        .skill-list li:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="nav-container">
             <div class="hamburger" onclick="toggleNav()">
@@ -310,7 +233,7 @@
 
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html" class="active">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="cv.html">CV</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -328,46 +251,67 @@
     </nav>
 
     <div class="container">
-        <div id="landing" class="page">
-            <div class="hero-section">
-                <h1>Welcome to My Portfolio</h1>
-                <p class="hero-description">Passionate developer creating innovative solutions with modern technologies. Explore my work and discover what I can bring to your next project.</p>
-            </div>
+        <div class="about-content">
+            <h1>About Me</h1>
 
-            <!-- Banner -->
-            <div class="banner-container">
-                <img src="images/kevin-ku-w7ZyuGYNpRQ-unsplash.jpg" alt="Banner Image" class="banner-image">
-            </div>
+            <p>I am a passionate developer with extensive experience in modern web technologies and cloud platforms. My journey in software development has been driven by a curiosity for innovative solutions and a commitment to creating impactful digital experiences.</p>
 
-            <!-- Projects Section -->
-            <div class="projects-section">
-                <h4 class="section-title">Featured Projects</h4>
-                <div class="projects-grid">
-                    <a href="https://youtu.be/OiQVUGaUuVI?si=0CYI_g6t3C2ytn53" class="project-card">
-                        <div class="project-image-container">
-                            <img src="images/food generator.png" alt="Delicious Recipe Generator" class="project-image">
-                        </div>
-                        <h5 class="project-title">Delicious Recipe Generator</h5>
-                        <p class="project-description">AI-powered recipe generation tool</p>
-                    </a>
-                    <a href="https://www.youtube.com/watch?v=tVFoUacdf4Q" class="project-card">
-                        <div class="project-image-container">
-                            <img src="images/robot.png" alt="Interview Preparation Assistant" class="project-image">
-                        </div>
-                        <h5 class="project-title">Interview Preparation Assistant</h5>
-                        <p class="project-description">Smart interview coaching platform</p>
-                    </a>
-                    <a href="https://github.com/konradbachusz/AWS-MLOps-module" class="project-card">
-                        <div class="project-image-container">
-                            <img src="images/mlops_accelerator.png" alt="MLOps Accelerator" class="project-image">
-                        </div>
-                        <h5 class="project-title">MLOps Accelerator</h5>
-                        <p class="project-description">Complete MLOps pipeline solution</p>
-                    </a>
+            <p>With a strong foundation in both front-end and back-end technologies, I specialize in building scalable applications that solve real-world problems. I'm particularly interested in machine learning, AI integration, and creating user-centric designs that make technology accessible to everyone.</p>
+
+            <h2>My Expertise</h2>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                        <li>React, Vue.js, Angular</li>
+                        <li>Responsive Design & Mobile-First Approach</li>
+                        <li>Modern CSS (Grid, Flexbox, Sass)</li>
+                        <li>TypeScript</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <ul class="skill-list">
+                        <li>Node.js, Python, Java</li>
+                        <li>RESTful APIs & GraphQL</li>
+                        <li>Database Design (SQL & NoSQL)</li>
+                        <li>Server Architecture & Microservices</li>
+                        <li>API Security & Authentication</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud & DevOps</h3>
+                    <ul class="skill-list">
+                        <li>AWS, Azure, Google Cloud Platform</li>
+                        <li>Docker & Kubernetes</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Infrastructure as Code</li>
+                        <li>Monitoring & Performance Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>AI & Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li>MLOps & Model Deployment</li>
+                        <li>Python Machine Learning Libraries</li>
+                        <li>Natural Language Processing</li>
+                        <li>Data Analysis & Visualization</li>
+                        <li>AI Integration in Web Applications</li>
+                    </ul>
                 </div>
             </div>
-        </div>
 
+            <h2>My Approach</h2>
+
+            <p>I believe in writing clean, maintainable code and following best practices in software development. My approach combines technical excellence with user-centered design, ensuring that the solutions I build are not only robust but also intuitive and accessible.</p>
+
+            <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community. I'm always excited to take on new challenges and collaborate on innovative projects.</p>
+        </div>
     </div>
 
     <footer>
@@ -388,6 +332,5 @@
             });
         });
     </script>
-
 </body>
 </html>
