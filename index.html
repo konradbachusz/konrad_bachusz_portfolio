@@ -32,6 +32,19 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            position: relative;
+        }
+
+        .nav-brand a {
+            color: #f1f5f9;
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-brand a:hover {
+            color: #60a5fa;
         }
 
         .nav-links {
@@ -77,10 +90,21 @@
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0;
+                flex-wrap: nowrap;
             }
 
             .hamburger {
                 display: flex;
+                order: 1;
+            }
+
+            .nav-brand {
+                flex: 1;
+                order: 2;
+            }
+
+            .nav-brand a {
+                font-size: 1.1rem;
             }
 
             .nav-links {
@@ -93,6 +117,7 @@
                 flex-direction: column;
                 padding: 1rem 0;
                 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                order: 3;
             }
 
             .nav-links.active {
@@ -107,6 +132,7 @@
             .social-links {
                 margin-top: 1rem;
                 justify-content: center;
+                order: 4;
             }
         }
 
@@ -181,15 +207,40 @@
         }
 
         .hero-section {
-            text-align: center;
             margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            margin-top: 4rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            text-align: left;
+            margin-bottom: 1.5rem;
         }
 
         .hero-description {
             font-size: 1.25rem;
             color: #64748b;
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0;
+            text-align: left;
         }
 
         .banner-container {
@@ -275,8 +326,28 @@
         }
 
         @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .hero-profile-image {
+                width: 150px;
+                height: 150px;
+                margin-top: 0;
+                align-self: center;
+            }
+
+
+            .hero-text h1 {
+                text-align: center;
+            }
+
             .hero-description {
                 font-size: 1.1rem;
+                text-align: center;
             }
 
             .banner-image {
@@ -308,6 +379,10 @@
                 <span></span>
             </div>
 
+            <div class="nav-brand">
+                <a href="index.html">Konrad Bachusz Portfolio</a>
+            </div>
+
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -333,8 +408,13 @@
     <div class="container">
         <div id="landing" class="page">
             <div class="hero-section">
-                <h1>Welcome to My Portfolio</h1>
-                <p class="hero-description">Lead Data & AI Engineer with extensive experience in data, machine learning, and AI across various industries. I deliver comprehensive data and AI solutions from inception to deployment while excelling in leadership roles.</p>
+                <div class="hero-content">
+                    <img src="images/profile.jpg" alt="Konrad Bachusz" class="hero-profile-image">
+                    <div class="hero-text">
+                        <h1>Welcome to My Portfolio</h1>
+                        <p class="hero-description">Lead Data & AI Engineer with extensive experience in data, machine learning, and AI across various industries. I deliver comprehensive data and AI solutions from inception to deployment while excelling in leadership roles.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Banner -->
