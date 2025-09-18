@@ -3,489 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>Konrad Bachusz - CV</title>
+    <title>CV - My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
+        .bg-cv-pattern {
+            background-image: url('images/joshua-sortino-LqKhnDzSF-8-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-
-        nav {
-            background-color: #1e293b;
-            color: #fff;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        .glass-morphism {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 2rem;
-        }
-
-        .nav-links li a {
-            color: #f1f5f9;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links li a:hover {
-            color: #60a5fa;
-        }
-
-        .nav-links li a.active {
-            color: #60a5fa;
-            border-bottom: 2px solid #60a5fa;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: #f1f5f9;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 0;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: #1e293b;
-                flex-direction: column;
-                padding: 1rem 0;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                text-align: center;
-                padding: 0.5rem 0;
-            }
-
-            .social-links {
-                margin-top: 1rem;
-                justify-content: center;
-            }
-        }
-
-        .container {
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            min-height: calc(100vh - 200px);
-            border-radius: 8px;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 2rem 1rem;
-                margin: 1rem;
-                border-radius: 4px;
-            }
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: #1e293b;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 2.25rem;
-            margin-bottom: 1.25rem;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: #475569;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.25rem;
-            }
-
-            h2 {
-                font-size: 1.875rem;
-            }
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #1e293b;
-            color: #f1f5f9;
-            margin-top: 3rem;
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .contact-info p {
-            margin: 5px 0;
-            font-size: 1.1em;
-            color: #475569;
-        }
-
-        .contact-info a {
-            margin: 5px 0;
-            font-size: 1.1em;
-            color: #60a5fa;
-            text-decoration: none;
-        }
-
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        .section {
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-size: 1.8em;
-            border-bottom: 3px solid #60a5fa;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            color: #1e293b;
-        }
-
-        .experience-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8fafc;
-            border-radius: 8px;
-            border-left: 4px solid #60a5fa;
-        }
-
-        .job-title {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-            color: #1e293b;
-        }
-
-        .company {
-            font-style: italic;
-            color: #64748b;
-        }
-
-        .date {
-            font-size: 0.9em;
-            color: #64748b;
-        }
-
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            padding-left: 20px;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-            color: #475569;
-        }
-
-        .external-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: #f8fafc;
-            border-radius: 8px;
-        }
-
-        .external-links a {
-            text-decoration: none;
-            color: #60a5fa;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-
-        .external-links a:hover {
-            color: #3b82f6;
-            text-decoration: underline;
-        }
-
-        .tech-stack {
-            font-family: 'Courier New', monospace;
-            font-size: 0.95em;
-            color: #475569;
-            background-color: #f8fafc;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 10px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .profile-image {
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        a {
-            color: #60a5fa;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #3b82f6;
-            text-decoration: underline;
+        .nav-glass {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <div class="hamburger" onclick="toggleNav()">
-                <span></span>
-                <span></span>
-                <span></span>
+<body class="font-inter bg-cv-pattern min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="nav-glass text-white px-4 py-4 shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- Hamburger Menu -->
+            <div class="md:hidden flex flex-col cursor-pointer p-2" onclick="toggleNav()">
+                <span class="w-6 h-0.5 bg-slate-100 mb-1 transition-all"></span>
+                <span class="w-6 h-0.5 bg-slate-100 mb-1 transition-all"></span>
+                <span class="w-6 h-0.5 bg-slate-100 transition-all"></span>
             </div>
 
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="cv.html" class="active">CV</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            <!-- Brand -->
+            <div class="flex-1 md:flex-none">
+                <a href="index.html" class="text-slate-100 text-xl font-semibold hover:text-blue-400 transition-colors">
+                    Konrad Bachusz Portfolio
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="hidden md:flex list-none gap-8" id="nav-links">
+                <li><a href="index.html" class="text-slate-100 hover:text-blue-400 font-medium py-2 transition-colors">Home</a></li>
+                <li><a href="about.html" class="text-slate-100 hover:text-blue-400 font-medium py-2 transition-colors">About</a></li>
+                <li><a href="projects.html" class="text-slate-100 hover:text-blue-400 font-medium py-2 transition-colors">Projects</a></li>
+                <li><a href="cv.html" class="text-slate-100 text-blue-400 font-medium py-2 border-b-2 border-blue-400">CV</a></li>
+                <li><a href="contact.html" class="text-slate-100 hover:text-blue-400 font-medium py-2 transition-colors">Contact</a></li>
             </ul>
 
-            <div class="social-links">
+            <!-- Social Links -->
+            <div class="hidden md:flex gap-4">
                 <a href="https://www.linkedin.com/in/konradbachusz/" target="_blank">
-                    <img src="images/linkedin.svg" alt="LinkedIn" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+                    <img src="images/linkedin.svg" alt="LinkedIn" class="w-6 h-6 brightness-0 invert hover:opacity-80 transition-opacity">
                 </a>
                 <a href="https://medium.com/@konradbachusz" target="_blank">
-                    <img src="images/medium-ar21~bgwhite.svg" alt="Medium" style="width: 45px; height: 24px;">
+                    <img src="images/medium-ar21~bgwhite.svg" alt="Medium" class="w-11 h-6 hover:opacity-80 transition-opacity">
                 </a>
                 <a href="https://github.com/konradbachusz" target="_blank">
-                    <img src="images/github-mark.svg" alt="GitHub" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
+                    <img src="images/github-mark.svg" alt="GitHub" class="w-6 h-6 brightness-0 invert hover:opacity-80 transition-opacity">
                 </a>
             </div>
+
+            <!-- Mobile Navigation Links -->
+            <ul class="hidden absolute top-full left-0 w-full nav-glass flex-col py-4 shadow-lg md:hidden" id="mobile-nav-links">
+                <li class="text-center py-2"><a href="index.html" class="text-slate-100 hover:text-blue-400 font-medium">Home</a></li>
+                <li class="text-center py-2"><a href="about.html" class="text-slate-100 hover:text-blue-400 font-medium">About</a></li>
+                <li class="text-center py-2"><a href="projects.html" class="text-slate-100 hover:text-blue-400 font-medium">Projects</a></li>
+                <li class="text-center py-2"><a href="cv.html" class="text-slate-100 text-blue-400 font-medium">CV</a></li>
+                <li class="text-center py-2"><a href="contact.html" class="text-slate-100 hover:text-blue-400 font-medium">Contact</a></li>
+
+                <!-- Mobile Social Links -->
+                <li class="flex justify-center gap-4 mt-4">
+                    <a href="https://www.linkedin.com/in/konradbachusz/" target="_blank">
+                        <img src="images/linkedin.svg" alt="LinkedIn" class="w-6 h-6 brightness-0 invert">
+                    </a>
+                    <a href="https://medium.com/@konradbachusz" target="_blank">
+                        <img src="images/medium-ar21~bgwhite.svg" alt="Medium" class="w-11 h-6">
+                    </a>
+                    <a href="https://github.com/konradbachusz" target="_blank">
+                        <img src="images/github-mark.svg" alt="GitHub" class="w-6 h-6 brightness-0 invert">
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 
-    <div class="container">
-        <h1>Konrad Bachusz</h1>
+    <!-- Main Container -->
+    <div class="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="glass-morphism rounded-2xl p-8 mb-8 shadow-2xl">
 
-        <div class="contact-info">
-            <p>Swindon, UK</p>
-            <p>+44 07450399735</p>
-            <p><a href="mailto:konradbachusz@gmail.com">konradbachusz@gmail.com</a></p>
-        </div>
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl lg:text-5xl font-bold text-slate-800 mb-6">Konrad Bachusz</h1>
+                <div class="w-24 h-1 bg-blue-400 mx-auto mb-8"></div>
 
-        <div style="text-align: center; margin-bottom: 2rem;">
-            <img src="images/profile.jpg" alt="Konrad Bachusz" class="profile-image" style="width: 200px; height: 200px; border-radius: 8px; object-fit: cover;">
-        </div>
+                <!-- Profile Image -->
+                <div class="mb-8">
+                    <img src="images/profile.jpg" alt="Konrad Bachusz" class="w-48 h-48 rounded-xl object-cover mx-auto shadow-lg">
+                </div>
 
-        <div class="external-links">
-            <a href="https://www.linkedin.com/in/konradbachusz/" target="_blank">LinkedIn</a>
-            <a href="https://medium.com/@konradbachusz" target="_blank">Medium</a>
-            <a href="https://github.com/konradbachusz" target="_blank">GitHub</a>
-        </div>
+                <!-- Contact Information -->
+                <div class="mb-8 space-y-2">
+                    <p class="text-lg text-slate-600">Swindon, UK</p>
+                    <p class="text-lg text-slate-600">+44 07450399735</p>
+                    <p><a href="mailto:konradbachusz@gmail.com" class="text-lg text-blue-600 hover:text-blue-700 transition-colors">konradbachusz@gmail.com</a></p>
+                </div>
 
-        <div class="section">
-            <h2 class="section-title">Summary</h2>
-            <p>Lead Data & AI Engineer with extensive experience in data, machine learning, and AI. I have gained finance and data-related experience across a variety of organizations, including an accounting practice, government bodies, a futures trading firm, a clinical research organization, a car-sharing company, the world's largest building society, and global consulting firms. Interested in Technical Cofounder or Founding Engineer roles.</p>
-        </div>
-
-        <div class="section">
-            <h2 class="section-title">Experience</h2>
-
-            <div class="experience-item">
-                <p class="job-title">Lead Data & AI Engineer</p>
-                <p class="company">Credera, Remote</p>
-                <p class="date">May 2022 - Present</p>
-                <ul>
-                    <li>Building GenAI applications for Wealth Management and Pharmaceutical clients</li>
-                    <li>Led a team of engineers to build a real-time mobile activity system for the UK's largest mortgage lender</li>
-                    <li>Automating financial advice and client services processes, using GenAI, for a wealth management client</li>
-                    <li>Accelerating the Sales team by leading the development of AI prototypes</li>
-                    <li>Delivering internal training on AI and acting as an internal AWS Platform Lead</li>
-                    <li>Built data products as part of a data mesh architecture for a UK government client</li>
-                    <li>Led teams of 14 engineers on data engineering and MLOps projects</li>
-                    <li>Mentored junior engineers, conducted interviews, improved the career development framework</li>
-                </ul>
-                <p class="tech-stack">Tech stack used: Terraform, Python, SQL, AWS, GCP, GenAI, Jenkins, Kubernetes, Helm, AWS Bedrock, JavaScript, Spinnaker, MCP, Databricks, ChatGPT Enterprise, Claude Code, LLMs, Pinecone, Microsoft Copilot Studio, Vector Databases, GitLab, OpenAI API, Prompt Engineering</p>
+                <!-- External Links -->
+                <div class="flex flex-wrap justify-center gap-6 mb-8">
+                    <a href="https://www.linkedin.com/in/konradbachusz/" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        LinkedIn
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                    <a href="https://medium.com/@konradbachusz" target="_blank" class="inline-flex items-center px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors">
+                        Medium
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/konradbachusz" target="_blank" class="inline-flex items-center px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-colors">
+                        GitHub
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
-            <div class="experience-item">
-                <p class="job-title">Data Engineering Consultant</p>
-                <p class="company">Accenture, Remote</p>
-                <p class="date">March 2021 - April 2022</p>
-                <ul>
-                    <li>Delivered hands-on data engineering solutions in Capital Markets space for clients like HSBC, M&G Investments, JPMorgan Chase</li>
-                    <li>Led teams of up to 7 engineers on data projects</li>
-                    <li>Supported the sales team with Data & AI proposition</li>
-                    <li>Translated data insights into business decisions, optimized batch data architectures, and led solution delivery</li>
-                </ul>
-                <p class="tech-stack">Tech stack used: Python, SQL, Machine Learning, GCP, Azure, AWS, Terraform, PowerBI, CI/CD, ETL, Spinnaker</p>
+            <!-- Summary Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b-4 border-blue-400 pb-2">Summary</h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Lead Data & AI Engineer with extensive experience in data, machine learning, and AI. I have gained finance and data-related experience across a variety of organizations, including an accounting practice, government bodies, a futures trading firm, a clinical research organization, a car-sharing company, the world's largest building society, and global consulting firms. Interested in Technical Cofounder or Founding Engineer roles.
+                </p>
             </div>
 
-            <div class="experience-item">
-                <p class="job-title">Associate Data Scientist</p>
-                <p class="company">Nationwide Building Society, Swindon</p>
-                <p class="date">July 2019 - March 2021</p>
-                <ul>
-                    <li>Delivered AI and data-based solutions and analytics for various departments</li>
-                    <li>Led a team of data scientists on a project focused on generating marketing leads using AI</li>
-                    <li>Developed and deployed data science solutions and machine learning models for mortgage retention, money laundering prevention, customer propensity, and trading bond portfolio benchmark optimization</li>
-                </ul>
-            </div>
-        </div>
+            <!-- Experience Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-800 mb-8 border-b-4 border-blue-400 pb-2">Experience</h2>
 
-        <div class="section">
-            <h2 class="section-title">Skills</h2>
-            <ul>
-                <li>Technical Team Leadership: Managed multiple teams of up to 14 engineers. Mentoring and coaching junior staff.</li>
-                <li>AI: Machine Learning, Deep Learning, Generative AI, LLMs, Prompt Engineering, Agentic AI, Multi-agent Systems.</li>
-                <li>Data Engineering: ETL, Big Data, Real-time Data, Pyspark, Kafka, CI/CD, distributed computing, DevOps, Docker, Kubernetes, SQL and NoSQL.</li>
-                <li>Cloud: AWS, GCP, Azure, Infrastructure as Code (Terraform).</li>
-                <li>Programming: Python, Terraform, SQL, Go, Bash, JavaScript, SAS, Dart, R.</li>
-                <li>Data Visualisation: Looker, Spotfire, PowerBI, QuickSight, Data Studio, Tableau, Periscope.</li>
-            </ul>
-        </div>
+                <!-- Lead Data & AI Engineer -->
+                <div class="bg-gradient-to-r from-blue-50 to-slate-50 rounded-xl p-6 mb-6 border-l-4 border-blue-400 shadow-sm">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-2">Lead Data & AI Engineer</h3>
+                    <p class="text-blue-600 font-medium mb-2">Credera, Remote</p>
+                    <p class="text-slate-500 text-sm mb-4">May 2022 - Present</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600 mb-4">
+                        <li>Building GenAI applications for Wealth Management and Pharmaceutical clients</li>
+                        <li>Led a team of engineers to build a real-time mobile activity system for the UK's largest mortgage lender</li>
+                        <li>Automating financial advice and client services processes, using GenAI, for a wealth management client</li>
+                        <li>Accelerating the Sales team by leading the development of AI prototypes</li>
+                        <li>Delivering internal training on AI and acting as an internal AWS Platform Lead</li>
+                        <li>Built data products as part of a data mesh architecture for a UK government client</li>
+                        <li>Led teams of 14 engineers on data engineering and MLOps projects</li>
+                        <li>Mentored junior engineers, conducted interviews, improved the career development framework</li>
+                    </ul>
+                    <div class="bg-slate-100 rounded-lg p-4">
+                        <p class="text-sm text-slate-700 font-mono">
+                            <strong>Tech stack:</strong> Terraform, Python, SQL, AWS, GCP, GenAI, Jenkins, Kubernetes, Helm, AWS Bedrock, JavaScript, Spinnaker, MCP, Databricks, ChatGPT Enterprise, Claude Code, LLMs, Pinecone, Microsoft Copilot Studio, Vector Databases, GitLab, OpenAI API, Prompt Engineering
+                        </p>
+                    </div>
+                </div>
 
-        <div class="section">
-            <h2 class="section-title">Qualifications</h2>
-            <ul>
-                <li>AWS Certified Machine Learning - Speciality.</li>
-                <li>DeepLearning.AI: Generative AI with Large Language Models Course.</li>
-                <li>Stanford University: Machine Learning Course.</li>
-                <li>Udacity: Machine Learning for Trading.</li>
-                <li>GCP Professional Data Engineer.</li>
-                <li>University of Oxford Technical Team Leadership and Communication Courses.</li>
-                <li>AWS Certified Cloud Practitioner.</li>
-                <li>PRINCE2 Foundation: Project Management.</li>
-            </ul>
-        </div>
+                <!-- Data Engineering Consultant -->
+                <div class="bg-gradient-to-r from-slate-50 to-blue-50 rounded-xl p-6 mb-6 border-l-4 border-slate-500 shadow-sm">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-2">Data Engineering Consultant</h3>
+                    <p class="text-slate-600 font-medium mb-2">Accenture, Remote</p>
+                    <p class="text-slate-500 text-sm mb-4">March 2021 - April 2022</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600 mb-4">
+                        <li>Delivered hands-on data engineering solutions in Capital Markets space for clients like HSBC, M&G Investments, JPMorgan Chase</li>
+                        <li>Led teams of up to 7 engineers on data projects</li>
+                        <li>Supported the sales team with Data & AI proposition</li>
+                        <li>Translated data insights into business decisions, optimized batch data architectures, and led solution delivery</li>
+                    </ul>
+                    <div class="bg-slate-100 rounded-lg p-4">
+                        <p class="text-sm text-slate-700 font-mono">
+                            <strong>Tech stack:</strong> Python, SQL, Machine Learning, GCP, Azure, AWS, Terraform, PowerBI, CI/CD, ETL, Spinnaker
+                        </p>
+                    </div>
+                </div>
 
-        <div class="section">
-            <h2 class="section-title">Other Work Experience</h2>
-            <div class="experience-item">
-                <p class="job-title">Grants Specialist: Promoted to Budget Coordinator</p>
-                <p class="company">PRA Health Sciences (currently ICON), Reading</p>
-                <p class="date">May 2017 - September 2018</p>
+                <!-- Associate Data Scientist -->
+                <div class="bg-gradient-to-r from-blue-50 to-slate-50 rounded-xl p-6 mb-6 border-l-4 border-blue-600 shadow-sm">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-2">Associate Data Scientist</h3>
+                    <p class="text-blue-600 font-medium mb-2">Nationwide Building Society, Swindon</p>
+                    <p class="text-slate-500 text-sm mb-4">July 2019 - March 2021</p>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li>Delivered AI and data-based solutions and analytics for various departments</li>
+                        <li>Led a team of data scientists on a project focused on generating marketing leads using AI</li>
+                        <li>Developed and deployed data science solutions and machine learning models for mortgage retention, money laundering prevention, customer propensity, and trading bond portfolio benchmark optimization</li>
+                    </ul>
+                </div>
             </div>
-            <div class="experience-item">
-                <p class="job-title">Academic Support Worker</p>
-                <p class="company">Oxford Brookes University</p>
-                <p class="date">September 2015 - May 2017</p>
-            </div>
-            <div class="experience-item">
-                <p class="job-title">Student Union Representative: Department of Economics Accounting and Finance</p>
-                <p class="company">Oxford Brookes University</p>
-                <p class="date">September 2012 - May 2017</p>
-            </div>
-            <div class="experience-item">
-                <p class="job-title">Accounting Technician Summer Internships</p>
-                <p class="company">Hampshire County Council, Winchester</p>
-                <p class="date">June 2015 - September 2015 & June 2016 - September 2016</p>
-            </div>
-            <div class="experience-item">
-                <p class="job-title">Sales Intern</p>
-                <p class="company">Blueprint Capital Limited, Remote</p>
-                <p class="date">January 2016 - June 2016</p>
-            </div>
-            <div class="experience-item">
-                <p class="job-title">Assistant Accountant (Industrial Placement)</p>
-                <p class="company">Oxfordshire County Council, Oxford</p>
-                <p class="date">September 2014 - June 2015</p>
-            </div>
-        </div>
 
-        <div class="section">
-            <h2 class="section-title">Education</h2>
-            <div class="experience-item">
-                <p class="job-title">BSc (Hons) Economics, Finance and International Business with Industrial Placement</p>
-                <p class="company">Oxford Brookes University</p>
-                <p class="date">2016</p>
+            <!-- Skills Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-800 mb-8 border-b-4 border-blue-400 pb-2">Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Technical Team Leadership</h4>
+                                <p class="text-slate-600">Managed multiple teams of up to 14 engineers. Mentoring and coaching junior staff.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">AI</h4>
+                                <p class="text-slate-600">Machine Learning, Deep Learning, Generative AI, LLMs, Prompt Engineering, Agentic AI, Multi-agent Systems.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Data Engineering</h4>
+                                <p class="text-slate-600">ETL, Big Data, Real-time Data, Pyspark, Kafka, CI/CD, distributed computing, DevOps, Docker, Kubernetes, SQL and NoSQL.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Cloud</h4>
+                                <p class="text-slate-600">AWS, GCP, Azure, Infrastructure as Code (Terraform).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Programming</h4>
+                                <p class="text-slate-600">Python, Terraform, SQL, Go, Bash, JavaScript, SAS, Dart, R.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Data Visualization</h4>
+                                <p class="text-slate-600">Looker, Spotfire, PowerBI, QuickSight, Data Studio, Tableau, Periscope.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Qualifications Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-800 mb-8 border-b-4 border-blue-400 pb-2">Qualifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span class="text-slate-700">AWS Certified Machine Learning - Speciality</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span class="text-slate-700">DeepLearning.AI: Generative AI with Large Language Models Course</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span class="text-slate-700">Stanford University: Machine Learning Course</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span class="text-slate-700">Udacity: Machine Learning for Trading</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span class="text-slate-700">GCP Professional Data Engineer</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span class="text-slate-700">University of Oxford Technical Team Leadership and Communication Courses</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span class="text-slate-700">AWS Certified Cloud Practitioner</span>
+                    </div>
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-lg">
+                        <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                        <span class="text-slate-700">PRINCE2 Foundation: Project Management</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-slate-800 mb-8 border-b-4 border-blue-400 pb-2">Education</h2>
+                <div class="bg-gradient-to-r from-blue-50 to-slate-50 rounded-xl p-6 border-l-4 border-blue-400 shadow-sm">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-2">BSc (Hons) Economics, Finance and International Business with Industrial Placement</h3>
+                    <p class="text-blue-600 font-medium mb-2">Oxford Brookes University</p>
+                    <p class="text-slate-500 text-sm">2016</p>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="nav-glass text-slate-100 text-center py-8 mt-12">
         <p>&copy; 2025 My Portfolio</p>
     </footer>
 
     <script>
         function toggleNav() {
-            const navLinks = document.getElementById('nav-links');
-            navLinks.classList.toggle('active');
+            const mobileNav = document.getElementById('mobile-nav-links');
+            mobileNav.classList.toggle('hidden');
+            mobileNav.classList.toggle('flex');
         }
 
         // Close mobile navigation when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
+        document.querySelectorAll('#mobile-nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                const navLinks = document.getElementById('nav-links');
-                navLinks.classList.remove('active');
+                const mobileNav = document.getElementById('mobile-nav-links');
+                mobileNav.classList.add('hidden');
+                mobileNav.classList.remove('flex');
             });
         });
     </script>
+
 </body>
 </html>
