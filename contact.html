@@ -255,9 +255,16 @@
             width: 100%;
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(96, 165, 250, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         .contact-info {
@@ -410,7 +417,8 @@
             <div class="contact-grid">
                 <div class="contact-form">
                     <h2>Send Me a Message</h2>
-                    <form action="#" method="post">
+                    <!-- Form configured to send emails to konradbachusz@gmail.com -->
+                    <form action="https://formspree.io/f/konradbachusz@gmail.com" method="POST" id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required placeholder="Your full name">
@@ -430,6 +438,18 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" required placeholder="Tell me more about your project or inquiry..."></textarea>
                         </div>
+
+                        <!-- Hidden fields for Formspree configuration -->
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+                        <input type="hidden" name="_replyto" value="">
+                        <input type="hidden" name="_cc" value="konradbachusz@gmail.com">
+                        <input type="text" name="_gotcha" style="display:none">
+                        <script>
+                            // Set reply-to to the sender's email
+                            document.querySelector('input[name="email"]').addEventListener('change', function() {
+                                document.querySelector('input[name="_replyto"]').value = this.value;
+                            });
+                        </script>
 
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
@@ -477,25 +497,79 @@
         });
 
         // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
 
-            // Simple validation
-            if (name && email && subject && message) {
-                // Here you would typically send the data to your server
-                alert('Thank you for your message! I will get back to you soon.');
-                this.reset();
-            } else {
-                alert('Please fill in all fields.');
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(this);
+
+                // For demo purposes, we'll simulate sending (replace with actual Formspree endpoint)
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showMessage('Thank you for your message! I will get back to you soon.', 'success');
+                    this.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                if (window.location.protocol === 'file:' || window.location.hostname === 'localhost') {
+                    showMessage('⚠️ Local testing detected. Form will work when deployed to a web server. Error: ' + error.message, 'error');
+                } else {
+                    showMessage('Sorry, there was an error sending your message. Please try again or contact me directly.', 'error');
+                }
+            } finally {
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
+
+        function showMessage(message, type) {
+            // Remove existing message
+            const existing = document.querySelector('.form-message');
+            if (existing) existing.remove();
+
+            // Create message element
+            const messageEl = document.createElement('div');
+            messageEl.className = `form-message ${type}`;
+            messageEl.style.cssText = `
+                padding: 1rem;
+                margin-top: 1rem;
+                border-radius: 8px;
+                font-weight: 500;
+                ${type === 'success' ?
+                    'background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0;' :
+                    'background-color: #fef2f2; color: #dc2626; border: 1px solid #fecaca;'
+                }
+            `;
+            messageEl.textContent = message;
+
+            // Insert after form
+            const form = document.getElementById('contactForm');
+            form.parentNode.insertBefore(messageEl, form.nextSibling);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (messageEl.parentNode) {
+                    messageEl.remove();
+                }
+            }, 5000);
+        }
     </script>
 </body>
 </html>
