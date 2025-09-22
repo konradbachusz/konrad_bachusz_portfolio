@@ -418,7 +418,7 @@
                 <div class="contact-form">
                     <h2>Send Me a Message</h2>
                     <!-- Form configured to send emails to konradbachusz@gmail.com -->
-                    <form action="https://formspree.io/f/konradbachusz@gmail.com" method="POST" id="contactForm">
+                    <form action="https://formspree.io/konradbachusz@gmail.com" method="POST" id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required placeholder="Your full name">
@@ -510,7 +510,6 @@
             try {
                 const formData = new FormData(this);
 
-                // For demo purposes, we'll simulate sending (replace with actual Formspree endpoint)
                 const response = await fetch(this.action, {
                     method: 'POST',
                     body: formData,
@@ -519,18 +518,32 @@
                     }
                 });
 
+                const result = await response.json();
+
                 if (response.ok) {
-                    showMessage('Thank you for your message! I will get back to you soon.', 'success');
+                    showMessage('✅ Thank you for your message! I will get back to you soon.', 'success');
                     this.reset();
                 } else {
-                    throw new Error('Network response was not ok');
+                    // Handle specific Formspree errors
+                    let errorMsg = 'Sorry, there was an error sending your message. ';
+                    if (result.error) {
+                        errorMsg += result.error;
+                    } else if (response.status === 422) {
+                        errorMsg += 'Please check that all fields are filled correctly.';
+                    } else if (response.status === 429) {
+                        errorMsg += 'Too many requests. Please wait a moment and try again.';
+                    } else {
+                        errorMsg += `Server responded with status ${response.status}.`;
+                    }
+                    errorMsg += ' You can also email me directly at konradbachusz@gmail.com';
+                    throw new Error(errorMsg);
                 }
             } catch (error) {
                 console.error('Form submission error:', error);
                 if (window.location.protocol === 'file:' || window.location.hostname === 'localhost') {
-                    showMessage('⚠️ Local testing detected. Form will work when deployed to a web server. Error: ' + error.message, 'error');
+                    showMessage('⚠️ Local testing detected. Form will work when deployed to a web server.', 'error');
                 } else {
-                    showMessage('Sorry, there was an error sending your message. Please try again or contact me directly.', 'error');
+                    showMessage(error.message || 'Sorry, there was an error sending your message. Please try again or contact me directly at konradbachusz@gmail.com', 'error');
                 }
             } finally {
                 // Reset button
