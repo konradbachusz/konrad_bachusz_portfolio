@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(start contact.html)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(del contact-test.html)"
     ],
     "deny": [],
     "ask": []

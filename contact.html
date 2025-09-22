@@ -417,7 +417,7 @@
             <div class="contact-grid">
                 <div class="contact-form">
                     <h2>Send Me a Message</h2>
-                    <!-- Form configured to send emails to konradbachusz@gmail.com -->
+                    <!-- Form configured with Formspree -->
                     <form action="https://formspree.io/f/xpwyajaa" method="POST" id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name</label>
@@ -441,13 +441,11 @@
 
                         <!-- Hidden fields for Formspree configuration -->
                         <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
-                        <input type="hidden" name="_replyto" value="">
-                        <input type="hidden" name="_cc" value="konradbachusz@gmail.com">
                         <input type="text" name="_gotcha" style="display:none">
                         <script>
-                            // Set reply-to to the sender's email
-                            document.querySelector('input[name="email"]').addEventListener('change', function() {
-                                document.querySelector('input[name="_replyto"]').value = this.value;
+                            // Set reply-to to the sender's email automatically
+                            document.querySelector('input[name="email"]').addEventListener('input', function() {
+                                // Formspree will automatically set reply-to from the email field
                             });
                         </script>
 
@@ -535,7 +533,7 @@
                     } else {
                         errorMsg += `Server responded with status ${response.status}.`;
                     }
-                    errorMsg += ' You can also email me directly at konradbachusz@gmail.com';
+                    errorMsg += ' Please try again or use the contact information below.';
                     throw new Error(errorMsg);
                 }
             } catch (error) {
@@ -543,7 +541,7 @@
                 if (window.location.protocol === 'file:' || window.location.hostname === 'localhost') {
                     showMessage('⚠️ Local testing detected. Form will work when deployed to a web server.', 'error');
                 } else {
-                    showMessage(error.message || 'Sorry, there was an error sending your message. Please try again or contact me directly at konradbachusz@gmail.com', 'error');
+                    showMessage(error.message || 'Sorry, there was an error sending your message. Please try again later.', 'error');
                 }
             } finally {
                 // Reset button
