@@ -3,7 +3,9 @@
     "allow": [
       "Bash(start contact.html)",
       "Bash(python:*)",
-      "Bash(del contact-test.html)"
+      "Bash(del contact-test.html)",
+      "Bash(del \"images\\food generator.png\" \"images\\robot.png\" \"images\\nasa-Q1p7bh3SHj8-unsplash.jpg\" \"images\\natalie-nedelmann-qoHiBioQs8o-unsplash.jpg\")",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
